@@ -9,7 +9,7 @@
 
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 15px;
         }
 
         table {
@@ -26,7 +26,7 @@
 
         td {
             border: 1px solid #ddd;
-            padding: 10px;
+            padding: 8px;
             vertical-align: middle;
         }
 
@@ -38,14 +38,15 @@
             background-color: #e8f2ff;
         }
 
-        .logo {
-            width: 100px;
+        .item-image {
+            width: 75px;
+            height: 75px;
+            object-fit: contain;
         }
 
-        .item-image {
-            width: 100px;
-            max-height: 100px;
-            object-fit: contain;
+        .logo {
+            width: 75px;
+            height: auto;
         }
 
     </style>
@@ -54,27 +55,23 @@
 
 <body>
 
-    <div style="text-align:center;">
+    <div style="text-align:center; margin-bottom:20px;">
 
         <img src="images/Ferrous Logo target.jpg"
-         
-            margin-top:10px;
+   tyle="
+            margin:5px 0 0 0;
             color:#1f4e79;
-            font-size:42px;
-        ">
+            font-size:32px;">
             MetaBid
         </h1>
 
         <p style="
-            color:#666;
-            margin-top:-10px;
-        ">
+            margin:0;
+            color:#666;">
             Asset Marketplace
         </p>
 
     </div>
-
-    <br>
 
     <table>
 
@@ -100,39 +97,4 @@ fetch('data/items.json')
 .then(response => response.json())
 .then(data => {
 
-    let html = '';
-
-    data.forEach(item => {
-
-        html += `
-        <tr>
-
-            <td>${item.id}</td>
-
-            <td>
-                <img src="${item.image}"
-                     class="item-image">
-            </td>
-
-            <td>${item.description}</td>
-
-            <td>${item.weight}</td>
-
-            <td>$${item.bidPrice}</td>
-
-            <td>${item.vendorName}</td>
-
-        </tr>
-        `;
-
-    });
-
-    document.getElementById('inventory').innerHTML = html;
-
-});
-
-</script>
-
-</body>
-
-</html>
+    let html
