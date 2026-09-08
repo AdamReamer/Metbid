@@ -2,32 +2,97 @@
 <html>
 
 <head>
+
     <title>MetaBid</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th {
+            background-color: #1f4e79;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            vertical-align: middle;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+
+        tr:hover {
+            background-color: #e8f2ff;
+        }
+
+        .logo {
+            width: 100px;
+        }
+
+        .item-image {
+            width: 100px;
+            max-height: 100px;
+            object-fit: contain;
+        }
+
+    </style>
+
 </head>
 
 <body>
 
-<!-- HEADER -->
-<div style="text-align:center;padding:20px;">
+    <div style="text-align:center;">
 
-    <img src="images/Ferrous Logo target.jpg"
-         style="nt-size:48px;
-        margin:10px 0 0 0;
-        color:#1f4e79;">
-        MetaBid
-    </h1>
+        <img src="images/Ferrous Logo target.jpg"
+         
+            margin-top:10px;
+            color:#1f4e79;
+            font-size:42px;
+        ">
+            MetaBid
+        </h1>
 
-    <p style="
-        font-family: Arial, sans-serif;
-        color:#666;
-        margin-top:5px;">
-        Asset Marketplace
-    </p>
+        <p style="
+            color:#666;
+            margin-top:-10px;
+        ">
+            Asset Marketplace
+        </p>
 
-</div>
+    </div>
 
-<!-- INVENTORY AREA -->
-<div id="inventory"></div>
+    <br>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Photo</th>
+                <th>Description</th>
+                <th>Weight</th>
+                <th>Bid Price</th>
+                <th>Vendor Name</th>
+            </tr>
+        </thead>
+
+        <tbody id="inventory">
+        </tbody>
+
+    </table>
 
 <script>
 
@@ -40,41 +105,24 @@ fetch('data/items.json')
     data.forEach(item => {
 
         html += `
-        <div style="
-            border:1px solid #ccc;
-            margin:10px;
-            padding:15px;
-            width:300px;
-            display:inline-block;
-            vertical-align:top;
-        ">
+        <tr>
 
-            <img src="${item.image}"
-                 width="300">
+            <td>${item.id}</td>
 
-            <h2>Lot #${item.id}</h2>
+            <td>
+                <img src="${item.image}"
+                     class="item-image">
+            </td>
 
-            <p>
-                <strong>Description:</strong><br>
-                ${item.description}
-            </p>
+            <td>${item.description}</td>
 
-            <p>
-                <strong>Weight:</strong>
-                ${item.weight}
-            </p>
+            <td>${item.weight}</td>
 
-            <p>
-                <strong>Current Bid:</strong>
-                $${item.bidPrice}
-            </p>
+            <td>$${item.bidPrice}</td>
 
-            <p>
-                <strong>Vendor:</strong>
-                ${item.vendorName}
-            </p>
+            <td>${item.vendorName}</td>
 
-        </div>
+        </tr>
         `;
 
     });
@@ -86,4 +134,5 @@ fetch('data/items.json')
 </script>
 
 </body>
+
 </html>
