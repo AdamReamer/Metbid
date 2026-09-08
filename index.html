@@ -1,3 +1,41 @@
-Vendor Inventory
-Test Forklift
-If you see this, JavaScript is working.
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vendor Inventory</title>
+</head>
+<body>
+
+<h1>Vendor Inventory</h1>
+
+<div id="inventory">Loading...</div>
+
+<script>
+
+fetch('data/items.json')
+.then(response => response.json())
+.then(data => {
+
+    let html = '';
+
+    data.forEach(item => {
+
+        html += `
+            <div>
+                <h2>${item.name}</h2>
+                <img src="${item.image}" width="300">
+                <p>${item.description}</p>
+                <p>$${item.price}</p>
+            </div>
+            <hr>
+        `;
+
+    });
+
+    document.getElementById('inventory').innerHTML = html;
+
+});
+
+</script>
+
+</body>
+</html>
