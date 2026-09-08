@@ -1,23 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MetaBid</title>
+</head>
+
+<body>
+
+<!-- HEADER -->
 <div style="text-align:center;padding:20px;">
 
     <img src="images/Ferrous Logo target.jpg"
-         style="width:150px;">
-
-    <h1 style="
-      font-size:48px;
+         style="nt-size:48px;
         margin:10px 0 0 0;
-        color:#1f4e79;
-    ">
+        color:#1f4e79;">
         MetaBid
     </h1>
 
     <p style="
         font-family: Arial, sans-serif;
         color:#666;
-        margin-top:5px;
-    ">
+        margin-top:5px;">
         Asset Marketplace
     </p>
 
 </div>
 
+<!-- INVENTORY AREA -->
+<div id="inventory"></div>
+
+<script>
+
+fetch('data/items.json')
+.then(response => response.json())
+.then(data => {
+
+    let html = '';
+
+    data.forEach(item => {
+
+        html += `
+        <div style="
+            border:1px solid #ccc;
+            margin:10px;
+            padding:15px;
+            width:300px;
+            display:inline-block;
+            vertical-align:top;
+        ">
+
+            <img src="${item.image}"
+                 width="300">
+
+            <h2>Lot #${item.id}</h2>
+
+            <p>
+                <strong>Description:</strong><br>
+                ${item.description}
+            </p>
+
+            <p>
+                <strong>Weight:</strong>
+                ${item.weight}
+            </p>
+
+            <p>
+                <strong>Current Bid:</strong>
+                $${item.bidPrice}
+            </p>
+
+            <p>
+                <strong>Vendor:</strong>
+                ${item.vendorName}
+            </p>
+
+        </div>
+        `;
+
+    });
+
+    document.getElementById('inventory').innerHTML = html;
+
+});
+
+</script>
+
+</body>
+</html>
