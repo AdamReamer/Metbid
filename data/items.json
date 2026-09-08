@@ -1,10 +1,31 @@
-[
-  {
-    "id": 12,
-    "description": "Testhakfheihe...",
-    "weight": "1000",
-    "bidPrice": "2500",
-    "vendorName": "ABC Recycling",
-    "image": "images/12.jpg"
-  }
-]
+fetch('data/items.json')
+.then(response => response.json())
+.then(data => {
+
+    let html = '';
+
+    data.forEach(item => {
+
+        html += `
+        <tr>
+
+            <td>${item.id}</td>
+
+            <td>
+                <img
+                    src="${item         <td>${item.description}</td>
+
+            <td>${item.weight}</td>
+
+            <td>$${item.bidPrice}</td>
+
+            <td>${item.vendorName}</td>
+
+        </tr>
+        `;
+
+    });
+
+    document.getElementById('inventory').innerHTML = html;
+
+});
