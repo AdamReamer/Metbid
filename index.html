@@ -1,343 +1,170 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
     <title>MetaBid</title>
 
     <style>
-        * {
-            box-sizing: border-box;
+        body{
+            font-family:Arial,sans-serif;
+            background:#f5f6f8;
+            margin:0;
+            padding:20px;
         }
 
-        body {
-            margin: 0;
-            padding: 20px;
-            background-color: #f5f6f8;
-            color: #222222;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 14px;
+        .container{
+            max-width:1200px;
+            margin:auto;
         }
 
-        .page-container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
+        .header{
+            text-align:center;
+            margin-bottom:20px;
         }
 
-        /* MetaBid header */
-
-        .site-header {
-            padding: 10px 0 20px;
-            text-align: center;
+        .logo{
+            width:60px;
+            height:60px;
+            object-fit:contain;
+            display:block;
+            margin:auto;
         }
 
-        .site-logo {
-            display: block !important;
-            width: 55px !important;
-            max-width: 55px !important;
-            height: 55px !important;
-            max-height: 55px !important;
-            margin: 0 auto 6px !important;
-            object-fit: contain !important;
+        h1{
+            margin:5px 0 0 0;
+            color:#1f4e79;
         }
 
-        .site-title {
-            margin: 0;
-            color: #1f4e79;
-            font-size: 30px;
-            line-height: 1.2;
+        .subtitle{
+            color:#666;
+            margin-top:5px;
         }
 
-        .site-subtitle {
-            margin: 3px 0 0;
-            color: #666666;
-            font-size: 14px;
+        table{
+            width:100%;
+            border-collapse:collapse;
+            background:white;
+            box-shadow:0 2px 5px rgba(0,0,0,.15);
         }
 
-        /* Inventory table */
-
-        .table-container {
-            overflow-x: auto;
-            border: 1px solid #d6dbe1;
-            border-radius: 6px;
-            background-color: #ffffff;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        th{
+            background:#245680;
+            color:white;
+            text-align:left;
+            padding:12px;
         }
 
-        table {
-            width: 100%;
-            min-width: 800px;
-            border-collapse: collapse;
-            table-layout: fixed;
+        td{
+            padding:10px;
+            border-bottom:1px solid #ddd;
         }
 
-        th {
-            padding: 11px 10px;
-            background-color: #245680;
-            color: #ffffff;
-            font-size: 14px;
-            font-weight: 700;
-            text-align: left;
+        tr:hover{
+            background:#f0f7ff;
         }
 
-        td {
-            height: 76px;
-            padding: 8px 10px;
-            border-bottom: 1px solid #dddddd;
-            color: #222222;
-            font-size: 14px;
-            line-height: 1.4;
-            text-align: left;
-            vertical-align: middle;
-        }
-
-        tbody tr:last-child td {
-            border-bottom: none;
-        }
-
-        tbody tr:nth-child(even) {
-            background-color: #f7f9fb;
-        }
-
-        tbody tr:hover {
-            background-color: #eaf3fb;
-        }
-
-        /* Column sizes */
-
-        .id-column {
-            width: 70px;
-            text-align: center;
-        }
-
-        .photo-column {
-            width: 100px;
-            text-align: center;
-        }
-
-        .description-column {
-            width: 35%;
-        }
-
-        .weight-column {
-            width: 120px;
-        }
-
-        .price-column {
-            width: 140px;
-        }
-
-        .vendor-column {
-            width: 210px;
-        }
-
-        /* Inventory photos */
-
-        .item-image {
-            display: block !important;
-            width: 55px !important;
-            max-width: 55px !important;
-            height: 55px !important;
-            max-height: 55px !important;
-            margin: 0 auto !important;
-            border-radius: 4px;
-            object-fit: contain !important;
-        }
-
-        .loading-message,
-        .empty-message,
-        .error-message {
-            height: auto;
-            padding: 25px;
-            text-align: center;
-        }
-
-        .loading-message,
-        .empty-message {
-            color: #666666;
-        }
-
-        .error-message {
-            color: #a4262c;
-        }
-
-        @media screen and (max-width: 700px) {
-            body {
-                padding: 10px;
-            }
-
-            .site-logo {
-                width: 45px !important;
-                max-width: 45px !important;
-                height: 45px !important;
-                max-height: 45px !important;
-            }
-
-            .site-title {
-                font-size: 26px;
-            }
+        .thumb{
+            width:60px;
+            height:60px;
+            object-fit:contain;
         }
     </style>
 </head>
 
 <body>
 
-    <main class="page-container">
+<div class="container">
 
-        <header class="site-header">
+    <div class="header">
 
-            ./images/Ferrous Logo target.jpg
+        <img
+            src="images/Ferrous Logo target.jpg"
+            class="logo"
+            alt="MetaBid Logo">
 
-            <h1 class="site-title">MetaBid</h1>
+        <h1>MetaBid</h1    </div>
 
-            <p class="site-subtitle">
-                Asset Marketplace
-            </p>
+    <table>
 
-        </header>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Photo</th>
+                <th>Description</th>
+                <th>Weight</th>
+                <th>Bid Price</th>
+                <th>Vendor Name</th>
+            </tr>
+        </thead>
 
-        <div class="table-container">
+        <tbody id="inventory">
 
-            <table>
+            <tr>
+                <td colspan="6">
+                    Loading inventory...
+                </td>
+            </tr>
 
-                <thead>
-                    <tr>
-                        <th class="id-column">ID</th>
-                        <th class="photo-column">Photo</th>
-                        <th class="description-column">Description</th>
-                        <th class="weight-column">Weight</th>
-                        <th class="price-column">Bid Price</th>
-                        <th class="vendor-column">Vendor Name</th>
-                    </tr>
-                </thead>
+        </tbody>
 
-                <tbody id="inventory">
+    </table>
 
-                    <tr>
-                        <td
-                            colspan="6"
-                            class="loading-message"
-                        >
-                            Loading inventory...
-                        </td>
-                    </tr>
+</div>
 
-                </tbody>
+<script>
 
-            </table>
+fetch('data/items.json')
 
-        </div>
+.then(response => response.json())
 
-    </main>
+.then(data => {
 
-    <script>
-        function safeText(value) {
-            if (
-                value === null ||
-                value === undefined ||
-                value === ""
-            ) {
-                return "";
-            }
+    let html = '';
 
-            return String(value);
-        }
+    data.forEach(item => {
 
-        function formatNumber(value) {
-            if (
-                value === null ||
-                value === undefined ||
-                value === ""
-            ) {
-                return "";
-            }
+        html += `
 
-            const number = Number(
-                String(value).replace(/[$,]/g, "")
-            );
+        <tr>
 
-            if (Number.isNaN(number)) {
-                return safeText(value);
-            }
+            <td>${item.id}</td>
 
-            return number.toLocaleString("en-US");
-        }
+            <td>
+                <img
+                    src="${item.image}"
+                    class="thumb">
+            </td>
 
-        function formatCurrency(value) {
-            if (
-                value === null ||
-                value === undefined ||
-                value === ""
-            ) {
-                return "";
-            }
+            <td>${item.description}</td>
 
-            const number = Number(
-                String(value).replace(/[$,]/g, "")
-            );
+            <td>${item.weight}</td>
 
-            if (Number.isNaN(number)) {
-                return safeText(value);
-            }
+            <td>$${Number(item.bidPrice).toLocaleString()}</td>
 
-            return number.toLocaleString("en-US", {
-                style: "currency",
-                currency: "USD",
-                minimumFractionDigits: 0,
-                maximumFractionDigits: 2
-            });
-        }
+            <td>${item.vendorName}</td>
 
-        fetch("./data/items.json")
-            .then(function (response) {
+        </tr>
 
-                if (!response.ok) {
-                    throw new Error(
-                        "Could not load items.json. HTTP status " +
-                        response.status
-                    );
-                }
+        `;
 
-                return response.json();
-            })
-            .then(function (items) {
+    });
 
-                const inventory =
-                    document.getElementById("inventory");
+    document.getElementById('inventory').innerHTML = html;
 
-                if (
-                    !Array.isArray(items) ||
-                    items.length === 0
-                ) {
-                    inventory.innerHTML = `
-                        <tr>
-                            <td
-                                colspan="6"
-                                class="empty-message"
-                            >
-                                No MetaBid items are currently available.
-                            </td>
-                        </tr>
-                    `;
+})
 
-                    return;
-                }
+.catch(error => {
 
-                let rows = "";
+    document.getElementById('inventory').innerHTML =
 
-                items.forEach(function (item) {
+        `<tr>
+            <td colspan="6">
+                Error: ${error}
+            </td>
+        </tr>`;
 
-                    let photo = "No photo";
+});
 
-                    if (item.image) {
-                        photo = `
-                            <img
-                                src="${safeText(item.image)}"
-                                alt="Photo for item ${safeText(item.id)}"
-    
+</script>
+
+</body>
+</html>
